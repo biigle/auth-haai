@@ -1,6 +1,6 @@
 <?php
 
-namespace SocialiteProviders\Haai;
+namespace Biigle\Modules\AuthHaai;
 
 use Exception;
 use GuzzleHttp\RequestOptions;
@@ -10,7 +10,7 @@ use SocialiteProviders\Manager\OAuth2\User;
 /**
  * @see https://nfdi-aai.de/infraproxy
  */
-class Provider extends AbstractProvider
+class SocialiteProvider extends AbstractProvider
 {
     public const IDENTIFIER = 'HAAI';
 

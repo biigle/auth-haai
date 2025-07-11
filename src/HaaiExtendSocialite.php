@@ -8,6 +8,6 @@ class HaaiExtendSocialite
 {
     public function handle(SocialiteWasCalled $socialiteWasCalled): void
     {
-        $socialiteWasCalled->extendSocialite('haai', Provider::class);
+        $socialiteWasCalled->extendSocialite('haai', SocialiteProvider::class);
     }
 }
