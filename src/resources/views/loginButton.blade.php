@@ -1,4 +1,4 @@
-<div style="text-align: center; margin-top: 1em;">
+<div style="text-align: center; margin: 1em 0;">
     <a style="display: block;" href="{{ route('haai-redirect') }}" title="Log in via Helmholtz AAI">
         <img style="width: 216px" src="{{ cachebust_asset('vendor/auth-haai/helmholtz_id_logo_blue.svg') }}">
     </a>

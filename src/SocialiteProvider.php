@@ -14,7 +14,33 @@ class SocialiteProvider extends AbstractProvider
 {
     public const IDENTIFIER = 'HAAI';
 
-    protected $scopes = ['openid', 'email'];
+    protected $scopes = ['openid', 'email', 'profile'];
+
+    protected $scopeSeparator = ' ';
+
+    /**
+     * {@inheritdoc}
+     */
+    protected function getTokenFields($code)
+    {
+        // Remove client ID and secret because they are sent in the Authorization header.
+        $fields = parent::getTokenFields($code);
+        unset($fields['client_id']);
+        unset($fields['client_secret']);
+
+        return $fields;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    protected function getTokenHeaders($code)
+    {
+        $headers = parent::getTokenHeaders($code);
+        $headers['Authorization'] = 'Basic '.base64_encode($this->clientId.':'.$this->clientSecret);
+
+        return $headers;
+    }
 
     /**
      * {@inheritdoc}
