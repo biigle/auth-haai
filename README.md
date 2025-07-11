@@ -1,4 +1,4 @@
-# BIIGLE Helmholtz AAI Login Module
+# BIIGLE Helmholtz AAI Module
 
 [![Test status](https://github.com/biigle/auth-haai/workflows/Tests/badge.svg)](https://github.com/biigle/auth-haai/actions?query=workflow%3ATests)
 

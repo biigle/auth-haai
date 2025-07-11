@@ -1,6 +1,6 @@
 <?php
 
-namespace SocialiteProviders\NfdiLogin;
+namespace SocialiteProviders\Haai;
 
 use Exception;
 use GuzzleHttp\RequestOptions;
@@ -12,7 +12,7 @@ use SocialiteProviders\Manager\OAuth2\User;
  */
 class Provider extends AbstractProvider
 {
-    public const IDENTIFIER = 'NFDILOGIN';
+    public const IDENTIFIER = 'HAAI';
 
     protected $scopes = ['openid', 'email'];
 

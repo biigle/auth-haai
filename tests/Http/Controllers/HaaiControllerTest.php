@@ -2,7 +2,7 @@
 
 namespace Biigle\Tests\Modules\AuthHaai\Http\Controllers;
 
-use Biigle\Modules\AuthHaai\HaaiLoginId;
+use Biigle\Modules\AuthHaai\HelmholtzId;
 use Biigle\User;
 use Laravel\Socialite\Facades\Socialite;
 use Laravel\Socialite\Two\InvalidStateException;
@@ -10,7 +10,7 @@ use Laravel\Socialite\Two\User as SocialiteUser;
 use Session;
 use TestCase;
 
-class HaaiLoginControllerTest extends TestCase
+class HaaiControllerTest extends TestCase
 {
     public function testRedirect()
     {
@@ -44,7 +44,7 @@ class HaaiLoginControllerTest extends TestCase
 
     public function testCallbackExistingUser()
     {
-        $id = HaaiLoginId::factory()->create();
+        $id = HelmholtzId::factory()->create();
         $user = new SocialiteUser;
         $user->map(['id' => $id->id]);
         Socialite::shouldReceive('driver->user')->andReturn($user);
@@ -64,12 +64,12 @@ class HaaiLoginControllerTest extends TestCase
         $this->be($user);
         $this->get('auth/haai/callback')->assertRedirectToRoute('settings-authentication');
         $this->assertAuthenticatedAs($user);
-        $this->assertTrue(HaaiLoginId::where('user_id', $user->id)->where('id', 'myspecialid')->exists());
+        $this->assertTrue(HelmholtzId::where('user_id', $user->id)->where('id', 'myspecialid')->exists());
     }
 
     public function testCallbackConnectConflictingIDExists()
     {
-        $id = HaaiLoginId::factory()->create();
+        $id = HelmholtzId::factory()->create();
         $user = new SocialiteUser;
         $user->map(['id' => $id->id]);
         Socialite::shouldReceive('driver->user')->andReturn($user);
@@ -84,7 +84,7 @@ class HaaiLoginControllerTest extends TestCase
 
     public function testCallbackConnectAlreadyConnected()
     {
-        $id = HaaiLoginId::factory()->create();
+        $id = HelmholtzId::factory()->create();
         $user = new SocialiteUser;
         $user->map(['id' => $id->id]);
         Socialite::shouldReceive('driver->user')->andReturn($user);

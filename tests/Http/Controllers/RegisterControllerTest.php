@@ -1,8 +1,8 @@
 <?php
 
-namespace Biigle\Tests\Modules\AuthNfdi\Http\Controllers;
+namespace Biigle\Tests\Modules\AuthHaai\Http\Controllers;
 
-use Biigle\Modules\AuthNfdi\NfdiLoginId;
+use Biigle\Modules\AuthHaai\HelmholtzId;
 use Biigle\Role;
 use Biigle\User;
 use Exception;
@@ -73,7 +73,7 @@ class RegisterControllerTest extends TestCase
         $this->assertSame('something', $user->affiliation);
         $this->assertSame(Role::editorId(), $user->role_id);
 
-        $this->assertTrue(NfdiLoginId::where('user_id', $user->id)->where('id', 'myhaaiid')->exists());
+        $this->assertTrue(HelmholtzId::where('user_id', $user->id)->where('id', 'myhaaiid')->exists());
     }
 
     public function testRegisterMissingAffiliation()
@@ -121,7 +121,7 @@ class RegisterControllerTest extends TestCase
 
     public function testRegisterIdTaken()
     {
-        NfdiLoginId::factory()->create(['id' => 'myhaaiid']);
+        HelmholtzId::factory()->create(['id' => 'myhaaiid']);
         $user = new SocialiteUser;
         $user->map([
             'id' => 'myhaaiid',
