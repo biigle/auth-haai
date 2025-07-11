@@ -19,33 +19,9 @@ class SocialiteProvider extends AbstractProvider
     /**
      * {@inheritdoc}
      */
-    protected function getTokenFields($code)
-    {
-        // Remove client ID and secret because they are sent in the Authorization header.
-        $fields = parent::getTokenFields($code);
-        unset($fields['client_id']);
-        unset($fields['client_secret']);
-
-        return $fields;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    protected function getTokenHeaders($code)
-    {
-        $headers = parent::getTokenHeaders($code);
-        $headers['Authorization'] = 'Basic '.base64_encode($this->clientId.':'.$this->clientSecret);
-
-        return $headers;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
     protected function getAuthUrl($state): string
     {
-        return $this->buildAuthUrlFromBase('https://infraproxy.nfdi-aai.dfn.de/idp/profile/oidc/authorize', $state);
+        return $this->buildAuthUrlFromBase('https://login.helmholtz.de/oauth2-as/oauth2-authz', $state);
     }
 
     /**
@@ -53,7 +29,7 @@ class SocialiteProvider extends AbstractProvider
      */
     protected function getTokenUrl(): string
     {
-        return 'https://infraproxy.nfdi-aai.dfn.de/idp/profile/oidc/token';
+        return 'https://login.helmholtz.de/oauth2/token';
     }
 
     /**
@@ -61,7 +37,7 @@ class SocialiteProvider extends AbstractProvider
      */
     protected function getUserByToken($token)
     {
-        $response = $this->getHttpClient()->get('https://infraproxy.nfdi-aai.dfn.de/idp/profile/oidc/userinfo', [
+        $response = $this->getHttpClient()->get('https://login.helmholtz.de/oauth2/userinfo', [
             RequestOptions::HEADERS => [
                 'Authorization' => 'Bearer '.$token,
             ],

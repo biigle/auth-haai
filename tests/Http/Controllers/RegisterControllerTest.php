@@ -139,7 +139,7 @@ class RegisterControllerTest extends TestCase
                 'affiliation' => 'something',
             ])
             ->assertSessionMissing('haai-token')
-            ->assertInvalid('nfdi-id');
+            ->assertInvalid('haai-id');
     }
 
     public function testRegisterWithoutToken()
@@ -160,7 +160,7 @@ class RegisterControllerTest extends TestCase
                 'affiliation' => 'something',
             ])
             ->assertSessionMissing('haai-token')
-            ->assertInvalid('nfdi-id');
+            ->assertInvalid('haai-id');
     }
 
     public function testRegisterPrivacy()
