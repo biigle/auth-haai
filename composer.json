@@ -1,0 +1,33 @@
+{
+    "name": "biigle/auth-haai",
+    "description": "BIIGLE module to offer authentication via Helmholtz AAI.",
+    "keywords": ["biigle", "biigle-module"],
+    "license": "GPL-3.0-only",
+    "support": {
+      "source": "https://github.com/biigle/auth-haai",
+      "issues": "https://github.com/biigle/auth-haai/issues"
+    },
+    "homepage": "https://biigle.de",
+    "authors": [
+      {
+         "name": "Martin Zurowietz",
+         "email": "m.zurowietz@uni-bielefeld.de"
+      }
+    ],
+    "require": {
+        "ext-json": "*",
+        "socialiteproviders/manager": "^4.4"
+    },
+    "autoload": {
+      "psr-4": {
+         "Biigle\\Modules\\AuthHaai\\": "src"
+      }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Biigle\\Modules\\AuthHaai\\ServiceProvider"
+            ]
+        }
+    }
+}
