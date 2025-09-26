@@ -16,7 +16,7 @@
     ],
     "require": {
         "ext-json": "*",
-        "socialiteproviders/manager": "^4.4"
+        "biigle/laravel-socialite-haai": "^1.0"
     },
     "autoload": {
       "psr-4": {
