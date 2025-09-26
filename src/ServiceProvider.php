@@ -4,9 +4,7 @@ namespace Biigle\Modules\AuthHaai;
 
 use Biigle\Services\Modules;
 use Illuminate\Routing\Router;
-use Illuminate\Support\Facades\Event;
 use Illuminate\Support\ServiceProvider as BaseServiceProvider;
-use SocialiteProviders\Manager\SocialiteWasCalled;
 
 class ServiceProvider extends BaseServiceProvider
 {
@@ -41,11 +39,6 @@ class ServiceProvider extends BaseServiceProvider
         $this->publishes([
             __DIR__.'/public/assets' => public_path('vendor/auth-haai'),
         ], 'public');
-
-        Event::listen(
-            SocialiteWasCalled::class,
-            [HaaiExtendSocialite::class, 'handle']
-        );
     }
 
     /**
