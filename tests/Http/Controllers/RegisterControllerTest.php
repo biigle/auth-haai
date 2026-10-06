@@ -71,7 +71,7 @@ class RegisterControllerTest extends TestCase
         $this->assertSame('Joe', $user->firstname);
         $this->assertSame('User', $user->lastname);
         $this->assertSame('something', $user->affiliation);
-        $this->assertSame(Role::editorId(), $user->role_id);
+        $this->assertSame(Role::EDITOR, $user->role);
 
         $this->assertTrue(HelmholtzId::where('user_id', $user->id)->where('id', 'myhaaiid')->exists());
     }
