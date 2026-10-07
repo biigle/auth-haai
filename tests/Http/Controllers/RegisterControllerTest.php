@@ -2,8 +2,8 @@
 
 namespace Biigle\Tests\Modules\AuthHaai\Http\Controllers;
 
+use Biigle\Enums\Role;
 use Biigle\Modules\AuthHaai\HelmholtzId;
-use Biigle\Role;
 use Biigle\User;
 use Exception;
 use Laravel\Socialite\Facades\Socialite;
